@@ -4,7 +4,8 @@
     //babySteps();
     //myFirstIO();
     //myFirstAsyncIO();
-    filteredLS();
+    //filteredLS();
+    makeItModular();
 })();
 
 function helloWorldNode(){
@@ -65,4 +66,19 @@ function filteredLS(){
     
     fs.readdir(directory, fileDirectoryReadCallBack);
 };
+
+function makeItModular(){
+    var dir = process.argv[2]
+    var ext = process.argv[3]
+    
+    require('./myModule')(dir, ext, function (err, data) {
+    	if (err) {
+    		return console.error(err)
+    	}
+    
+    	data.forEach(function (item) {
+    		console.log(item);
+    	})
+    })
+}
 
